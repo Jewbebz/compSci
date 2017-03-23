@@ -2,6 +2,7 @@ import random
 arrows=5
 ssword=0
 coins=10
+dagger=0
 print ("""/n                             ,,                                           
 `7MMF'     A     `7MF'     `7MM                                           
   `MA     ,MA     ,V         MM                                           
@@ -33,35 +34,28 @@ if start == "y":
     boar=input("Options \n A: Shoot Boar with arrow \n B: Run \n C: Draw dagger and charge \n Answer: ")
     boar=boar.upper()
     print("\n")
-    while boar == "A":
-        arrows=arrows-1
-        print ("You take aim and fire")
-        print("\n")
-
-        import random
-
-        die1=random.randrange(3)+1
-        boar="k"
-    
-        if die1 == 1:
-            print("You shot the boar dead in the head, taking it down before it notices you")
-            break
-        else:
-            print("You miss, gaining the notice of the boar, it begins to charge at you")
+    if boar == "A":
+        if arrows >= 1:
+            arrows=arrows-1
+            print("You take aim and fire")
             print("\n")
-            boar2=input("As it charges, you have limited options, they are: \n A: Get to cover \n B: Wield dagger in defence \n C: Fire again ")
-            boar2=boar2.upper()
-            while boar2 == "A":
+            arrowHit=random.randrange(3)+1
+            if arrowHit == 1:
+                print("You shot the boar dead in the head, taking it down before it notices you")
+            else:
+                print("You miss, gaining the notice of the boar, it begins to charge at you")
                 print("\n")
+                boar2=input("As it charges, you have limited options, they are: \n A: Get to cover \n B: Wield dagger in defence \n C: Fire again ")
                 print("\n")
-                print("\n")
-                print ("You run for cover")
-                print("\n")
-
-
-                die2=random.randrange(2)+1
-                if die2 == 1:
-                    print("""You trip and fall, the boar charges straight through you, impailing you \n
+                boar2=boar2.upper()
+                if boar2 == "A":
+                    print("\n")
+                    print("\n")
+                    print ("You run for cover")
+                    print("\n")
+                    evasion=random.randrange(2)+1
+                    if evasion == 1:
+                        print("""You trip and fall, the boar charges straight through you, impailing you \n
                  ______
            _____/      \\_____
           |  _     ___   _   ||
@@ -77,11 +71,29 @@ if start == "y":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-                    break
-                else:
-                    print("egg")
-                    break
-        
+                    else:
+                        print("You sucsessfuly get to the bushes. Your safe...for now.")
+                elif boar2 == "B":
+                    if dagger == 1:
+                        daggerHit = random.randrange(3)+1
+                        if daggerHit == 1:
+                            print("You succsesfully stab the boar")
+                        else:
+                            print("You miss and the boar impales you, killing you.")
+                    else:
+                        print("You have no dagger, the boar charges you and you are impaled.")
+                elif boar2 == "C":
+        if arrows >= 1:
+            arrowHit=random.randrange(3)+1
+            if arrowHit == 1:
+                print("You hit the boar taking it down")
+            else:
+                print("You miss the boar, it charges impaling you")
+        else:
+            print("You don't have any arrows. The bor imaples you.")
+    else:
+        print("")
+                
     print("\n")
     scavenge1=input("The boar lies dead, \n A: Scavenge the boar \n B: Leave it and continue ")
     scavenge1=scavenge1.upper()
@@ -100,4 +112,3 @@ elif start=="n":
     print("Okay, cya pal")
 else:
     print("y or n pal, nothing else")
-    
