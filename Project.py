@@ -1,5 +1,7 @@
 import random
 arrows=5
+ssword=0
+coins=10
 print ("""/n                             ,,                                           
 `7MMF'     A     `7MF'     `7MM                                           
   `MA     ,MA     ,V         MM                                           
@@ -84,9 +86,16 @@ if start == "y":
     scavenge1=input("The boar lies dead, \n A: Scavenge the boar \n B: Leave it and continue ")
     scavenge1=scavenge1.upper()
     if scavenge1=="A":
-        die3=random.randrange(
+        die3=random.randrange(2)+1
+        die4=random.randrange(10)+1
+        if die3==1:
+            arrows=arrows+1
+            coins=coins+5
+            print("You scavenged an arrow and 5 gold coins")
+            if die4==1:
+                print("And a short sword")
+                ssword=1
             
-
 elif start=="n":
     print("Okay, cya pal")
 else:
