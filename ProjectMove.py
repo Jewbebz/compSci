@@ -1,6 +1,6 @@
 #Standard chances are as follows:
 #Evasion Chance is 1/2
-#Bow hit chance is 1/2
+#Bow hit chance is 1/3
 #Dagger hit chance is 1/3
 
 import random
@@ -128,19 +128,22 @@ if start=="y":
                             else:
                                 print("You can only answer in 'A' or 'B' or 'C' dude!")
                     elif boar2=="C":
-                        if arrows>=1:
-                            arrowHit=random.randrange(3)+1
-                            if arrowHit==1:
-                                print("You hit the boar taking it down")
-                                boarDead=True
-                                boarKilledByBow=True
-                                boarKilledByDagger=False
+                        if bow>=1:
+                            if arrows>=1:
+                                arrowHit=random.randrange(3)+1
+                                if arrowHit==1:
+                                    print("You hit the boar taking it down")
+                                    boarDead=True
+                                    boarKilledByBow=True
+                                    boarKilledByDagger=False
+                                else:
+                                    print("You miss the boar, it charges impaling you")
+                                    life=0
                             else:
-                                print("You miss the boar, it charges impaling you")
+                                print("You don't have any arrows. The boar imaples you.")
                                 life=0
                         else:
-                            print("You don't have any arrows. The boar imaples you.")
-                            life=0
+                            boar4=input("")
                     else:
                         print("dude, you can only answe in 'A', 'B', or 'C'")
     elif boar=="B":
