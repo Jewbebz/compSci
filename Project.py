@@ -34,7 +34,7 @@ if start == "y":
                    ||`;      / / | |
                   //_;`    ,_;' ,_;"
         """)
-    boar=input("Options \n A: Shoot Boar with arrow \n B: Run \n C: Draw dagger and charge \n Answer: ")
+    boar=input("Options \n A: Shoot the Boar with an arrow \n B: Draw a dagger and charge the boar \n C: Run \n Answer: ")
     boar=boar.upper()
     print("\n")
     if boar == "A":
@@ -44,8 +44,10 @@ if start == "y":
             print("\n")
             arrowHit=random.randrange(3)+1
             if arrowHit == 1:
-                print("You shot the boar dead in the head, taking it down before it notices you")
+                print("Nice Shot! You shot the boar dead in the head, taking it down before it notices you")
                 boarDead = True
+                boarKilledByBow = True
+                boarKilledByBow = False
             else:
                 print("You miss, gaining the notice of the boar, it begins to charge at you")
                 print("\n")
@@ -81,6 +83,8 @@ if start == "y":
                         if daggerHit == 1:
                             print("You succsesfully stab the boar")
                             boarDead = True
+                            boarKilledbyDagger = True
+                            boarKilledbyBow = False
                         else:
                             print("""You miss and the boar impales you, killing you. \n
                      ______
@@ -121,6 +125,8 @@ if start == "y":
                         if arrowHit == 1:
                             print("You hit the boar taking it down")
                             boarDead = True
+                            boarKilledByBow = True
+                            boarKilledByDagger = False
                         else:
                             print("""You miss the boar, it charges impaling you
                      ______
@@ -147,23 +153,145 @@ if start == "y":
             boarAlert=random.randrange(4)+1
             if boarAlert==1:
                 print("The boar notices you and starts charging at you.")
+                boarCharging=input("You have two options to survive: \nA: Run away \nB: Keep chargin and stab the boar")
+                boarCharging=boarChargin.upper()
+                if boarCharging=="A":
+                    evasion=random.randrange(3)+1
+                    if evasion==1:
+                        print("You sucsessfully get away from the boar but you have lost 2 of your arrows while fleeing")
+                        arrows=arrows-2
+                    else:
+                        print("""You are unsecsessful at fleeing from the boar, it impales you as you run away in fear.
+                     ______
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  ||
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |                  ||
+              |       you        ||
+              |                  ||
+      *       | *   **    * **   |**      **
+       \))....\\/.,(//,,..,,\||(,,.,\\,.((//
+""")
+                else:
+                    daggerHit = random.randrange(2)+1
+                    if daggerHit == 1:
+                        print("You stab the boar in the heart just before it reaches you. It was a close call with death but you killed the boar")
+                        boarDead = True
+                        boarKilledByBow = False
+                        boarKilledByDagger = True
+                    else:
+                        print("""You attempt to stab the boar but don't have the strength. The boar impalles you.
+                     ______
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  ||
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |                  ||
+              |       you        ||
+              |                  ||
+      *       | *   **    * **   |**      **
+       \))....\\/.,(//,,..,,\||(,,.,\\,.((//
+""")
         else:
             print("you don't have a dagger, but you chargin alerts the bear")
-            boarAlert=1
-    print("\n")
-    scavenge1=input("The boar lies dead, \n A: Scavenge the boar \n B: Leave it and continue \n Answer: ")
-    scavenge1=scavenge1.upper()
-    if scavenge1=="A":
-        die3=random.randrange(2)+1
-        die4=random.randrange(10)+1
-        if die3==1:
-            arrows=arrows+1
-            coins=coins+5
-            print("You scavenged an arrow and 5 gold coins")
-        if die4==1:
-            print("And a short sword")
-            ssword=1
-            
+            boarCharging=input("You can either run or try and shoot it with another arrow. \nA: Flee \nB: Shoot at the boar")
+            boarCharging=boarCharging.upper()
+            if boarCharging=="A":
+                evasion=random.randrange(2)+1
+                if evasion==1:
+                    print("You escape the boar, but while running you lost two of your arrows.")
+                    arrows=arrows-2
+                else:
+                    print("""As you flee the boar catches up with you and you are impaled.
+                     ______
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  ||
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |                  ||
+              |       you        ||
+              |                  ||
+      *       | *   **    * **   |**      **
+       \))....\\/.,(//,,..,,\||(,,.,\\,.((//
+""")
+            else:
+                arrowHit = random.randrange(2)+1
+                if arrowHit == 1:
+                    print("You hit the boar in the head, killing it.")
+                    boadDead = True
+                    boarKilledByBow = True
+                    boarKilledByDagger = False
+                else:
+                    print("""You miss and the boar reaches you.
+                     ______
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  ||
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |                  ||
+              |       you        ||
+              |                  ||
+      *       | *   **    * **   |**      **
+       \))....\\/.,(//,,..,,\||(,,.,\\,.((//
+""")
+    elif boar=="C":
+        evasion=random.randrange(3)+1
+        if evasion==1:
+            print("You escaoe the boar to live another day")
+        else:
+            print("""The boar catches up with you and impales you on a tree.
+                     ______
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  ||
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |                  ||
+              |       you        ||
+              |                  ||
+      *       | *   **    * **   |**      **
+       \))....\\/.,(//,,..,,\||(,,.,\\,.((//
+""")
+    else:
+        print("You done goofed. Dude, only y's and n's it not that hard.")
+        if boadDead==True:
+            scavenge=input("The boar lies dead, \n A: Scavenge the boar \n B: Leave it and continue \n Answer: ")
+            scavenge=scavenge.upper()
+            if scavenge=="A":
+                die0=random.randrange(2)+1
+                die1=random.randrange(10)+1
+                if die0==1:
+                    arrows=arrows+1
+                    coins=coins+5
+                    print("You scavenged an arrow and 5 gold coins")
+                    print("You now have ", arrows," arrows and ", coins," Coins.")
+                else:
+                    print("The boar is covered in it's own blood. It would be foolish to search through it.")
+                    if die1==1:
+                        print("You also find a short sword")
+                        ssword=1
+                    else:
+                        print("")
 elif start=="n":
     print("Okay, cya pal")
 else:
