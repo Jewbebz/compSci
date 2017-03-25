@@ -1,5 +1,3 @@
-#Import Random Numbers
-
 print ("Random Number Generator")
 
 import random

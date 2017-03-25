@@ -11,6 +11,7 @@ coins=10
 dagger=0
 furPelt=0
 boarMeat=0
+bow=0
 
 boarDead=False
 
@@ -33,32 +34,27 @@ start=start.lower()
 if start=="y":
     while name=="":
         name=input("What's your name?(16 characters max.) \n            ")
-        if len(name)==6:
+        if len(name)>=17:
+            print("Sorry we don't support your usage of a name that is longer than 16 characters. For real just enter your first name and stop being a nerd xDD")
+            name=""
             print("")
-            print("Thats a super cool name dude!")
-            lenName=6
-        elif len(name)>>6:
+        else:
             print("")
-            print("You can only have a six character name for now, we're working on allowng longer names.")
-        elif len(name)<<6:
-            print("Thats a nice name you have")
-            print("")
-            lenName=len(name)
+        lenName=len(name)
     startWeapon=input("What weapon would you like to start with? \nA: A Bow \nB: A Dagger \nAnswer: ")
     startWeapon=startWeapon.upper()
     if startWeapon=="A":
         bow=1
         arrows=5
-        print("You get a shortbow and 5 arrows to start you journey")
+        print("\nYou get a shortbow and 5 arrows to start you journey")
     elif startWeapon=="B":
         dagger=1
-        print("You get a dagger to start you adventure")
+        print("\nYou get a dagger to start you adventure")
     else:
         print("You can only have two options. 'A' or 'B' it really not that hard dude.")
-    print("""\nYou continue your long trek in the woods, you haven't been too successful while hunting. You have only 5 arrows remaining, and you see a wild board ahead.\nAs it approachs you, you ready your hunting bow.
+    print("""\nYou continue your long trek in the woods, so far you haven't been too successful while hunting, but you see a wild board ahead.\nAs it approachs you, you have a few options.
 
 
-       
               _,-"'''"-..__
          |`,-'_. `  ` ``  `--'"'".
          ;  ,'  | ``  ` `  ` ```  `.
@@ -181,14 +177,14 @@ if start=="y":
                     arrows=arrows-2
                 else:
                     print("As you flee the boar catches up with you and you are impaled.")
-            elif boarChargin=="A":
-                if arrows >= 1:
-                    arrowHit = random.randrange(2)+1
-                    if arrowHit == 1:
+            elif boarCharging=="B":
+                if arrows>=1:
+                    arrowHit=random.randrange(2)+1
+                    if arrowHit==1:
                         print("You hit the boar in the head, killing it.")
-                        boadDead = True
-                        boarKilledByBow = True
-                        boarKilledByDagger = False
+                        boadDead=True
+                        boarKilledByBow=True
+                        boarKilledByDagger=False
                     else:
                         print("You miss and the boar reaches you.")
                         life=0
@@ -533,7 +529,6 @@ else:
     print("\n")
     print("'y' or 'n' pal, nothing else")
     
-exit = "a"
-while exit == "a":
-    print("\n")
-    exit=input("Press 'enter' to exit")
+exit="a"
+while exit=="a":
+    exit=input("\nPress 'enter' to exit")

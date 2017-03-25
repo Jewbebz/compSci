@@ -21,7 +21,7 @@ loses = 0
 
 play = input("Would you Like to play?(y/n) ")
 if play == "y":
-    print("Sweet! let's get started.")
+    print("\nSweet! let's get started.\n")
     while play == "y":
         if played == "n":
             die1 = random.randrange(6)+1
@@ -60,6 +60,10 @@ if play == "y":
                     else:
                         print("please only enter the letter 'y'to indicate yes, or the letter 'n' to indicate no.")
 elif play == "n":
-    print("OK, have a good day!")
+    print("\nOK, have a good day!")
 else:
-    print("Please answer with a 'y' for yes or a 'n' for no.")
+    print("\nPlease answer with a 'y' for yes or a 'n' for no.\n")
+
+exit="a"
+while exit=="a":
+    exit=input("\nPress 'enter' to exit")
