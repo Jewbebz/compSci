@@ -5,6 +5,7 @@
 
 import random
 
+#inventory
 arrows=0
 ssword=0
 coins=10
@@ -13,8 +14,10 @@ furPelt=0
 boarMeat=0
 bow=0
 
+#Mob info
 boarDead=False
 
+#Character Info
 name=""
 life=1
 experience=0
@@ -198,7 +201,7 @@ if start=="y":
     elif boar=="C":
         evasion=random.randrange(3)+1
         if evasion==1:
-            print("You escaoe the boar to live another day")
+            print("You escape the boar to live another day")
         else:
             print("The boar catches up with you and impales you on a tree.")
     else:
@@ -210,6 +213,7 @@ if start=="y":
             die0=random.randrange(6)+1
             die1=random.randrange(10)+1
             if die0!=1:
+                if boarKilledByBow==True:
                 arrows=arrows+1
                 coins=coins+5
                 furPelt=furPelt+1
