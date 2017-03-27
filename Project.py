@@ -44,17 +44,20 @@ if start=="y":
         else:
             print("")
         lenName=len(name)
-    startWeapon=input("What weapon would you like to start with? \nA: A Bow \nB: A Dagger \nAnswer: ")
-    startWeapon=startWeapon.upper()
-    if startWeapon=="A":
-        bow=1
-        arrows=5
-        print("\nYou get a shortbow and 5 arrows to start you journey")
-    elif startWeapon=="B":
-        dagger=1
-        print("\nYou get a dagger to start you adventure")
-    else:
-        print("You can only have two options. 'A' or 'B' it really not that hard dude.")
+    startWeapon=("")
+    while startWeapon=="":
+        startWeapon=input("What weapon would you like to start with? \nA: A Bow \nB: A Dagger \nAnswer: ")
+        startWeapon=startWeapon.upper()
+        if startWeapon=="A":
+            bow=1
+            arrows=5
+            print("\nYou get a shortbow and 5 arrows to start you journey")
+        elif startWeapon=="B":
+            dagger=1
+            print("\nYou get a dagger to start you adventure")
+        else:
+            print("You can only have two options. 'A' or 'B' it really not that hard dude.\n")
+            startWeapon=""
     print("""\nYou continue your long trek in the woods, so far you haven't been too successful while hunting, but you see a wild board ahead.\nAs it approachs you, you have a few options.
 
 
@@ -214,12 +217,12 @@ if start=="y":
             die1=random.randrange(10)+1
             if die0!=1:
                 if boarKilledByBow==True:
-                arrows=arrows+1
-                coins=coins+5
-                furPelt=furPelt+1
-                boarMeat=boarMeat+1
-                print("You recovered your arrow, found 5 gold coins, a fur pelt, and some boar meat.")
-                print("You now have ", arrows," arrows and ", coins," Coins.")
+                    arrows=arrows+1
+                    coins=coins+5
+                    furPelt=furPelt+1
+                    boarMeat=boarMeat+1
+                    print("You recovered your arrow, found 5 gold coins, a fur pelt, and some boar meat.")
+                    print("You now have ", arrows," arrows and ", coins," Coins.")
             else:
                 print("")
                 print("The boar is covered in it's own blood. It would be foolish to search through it.")
