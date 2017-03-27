@@ -150,11 +150,11 @@ if start=="y":
                         print("dude, you can only answe in 'A', 'B', or 'C'")
     elif boar=="B":
         if dagger==1:
-            boarAlert=random.randrange(4)+1
+            boarAlert=random.randrange(2)+1
             if boarAlert==1:
                 print("The boar notices you and starts charging at you.")
                 boarCharging=input("You have two options to survive: \n A: Run away \n B: Keep chargin and attempt stab the boar \nAnswer: ")
-                boarCharging=boarChargin.upper()
+                boarCharging=boarCharging.upper()
                 if boarCharging=="A":
                     evasion=random.randrange(3)+1
                     if evasion==1:
@@ -164,14 +164,20 @@ if start=="y":
                         print("You are unsecsessful at fleeing from the boar, it impales you as you run away in fear.")
                         life=0
                 else:
-                    daggerHit = random.randrange(2)+1
-                    if daggerHit == 1:
-                        print("You stab the boar in the heart just before it reaches you. It was a close call with death but you killed the boar")
-                        boarDead = True
-                        boarKilledByBow = False
-                        boarKilledByDagger = True
+                    daggerHit=random.randrange(2)+1
+                    if daggerHit==1:
+                        print("\nYou stab the boar in the heart just before it reaches you. It was a close call with death but you killed the boar")
+                        boarDead=True
+                        boarKilledByBow=False
+                        boarKilledByDagger=True
                     else:
                         print("You attempt to stab the boar but don't have the strength. The boar impalles you.")
+                        life=0
+            else:
+                print("You charge the bow without alerting it. You kill it silently we extreme persission.")
+                boarDead=True
+                boarKilledByBow=False
+                boarKilledByDagger=True
         else:
             print("you don't have a dagger, but you chargin alerts the bear")
             boarCharging=input("You can either run or try and shoot it with another arrow. \nA: Flee \nB: Shoot at the boar \nAnswer: ")
@@ -210,31 +216,47 @@ if start=="y":
     else:
         print("You done goofed. Dude, only y's and n's it's not that hard.")
     if boarDead==True:
-        scavenge=input("The boar lies dead, what would you like to do? \n A: Scavenge the boar \n B: Leave it and continue \n Answer: ")
-        scavenge=scavenge.upper()
-        if scavenge=="A":
-            die0=random.randrange(6)+1
-            die1=random.randrange(10)+1
-            if die0!=1:
-                if boarKilledByBow==True:
-                    arrows=arrows+1
-                    coins=coins+5
-                    furPelt=furPelt+1
-                    boarMeat=boarMeat+1
-                    print("You recovered your arrow, found 5 gold coins, a fur pelt, and some boar meat.")
-                    print("You now have ", arrows," arrows and ", coins," Coins.")
-            else:
-                print("")
-                print("The boar is covered in it's own blood. It would be foolish to search through it.")
-                if die1==1:
-                    print("You also find a short sword")
-                    ssword=1
+        scavengeBoar=""
+        while scavengeBoar=="":
+            scavengeBoar=input("The boar lies dead, what would you like to do? \n A: Scavenge the boar \n B: Leave it and continue \n Answer: ")
+            scavengeBoar=scavengeBoar.upper()
+            if scavengeBoar=="A":
+                die0=random.randrange(8)+1
+                die1=random.randrange(10)+1
+                if die0!=1:
+                    if boarKilledByBow==True:
+                        arrows=arrows+1
+                        coins=coins+5
+                        furPelt=furPelt+1
+                        boarMeat=boarMeat+1
+                        print("You recovered your arrow, found 5 gold coins, a fur pelt, and some boar meat.")
+                        if die1==1:
+                            ssword+1
+                            print("You also find a short sword")
+                        else:
+                            print("")
+                        print("You now have ", arrows," arrows and ", coins," coins.")
+                    elif boarKilledByBow==True:
+                        coins=coins+5
+                        furPelt=furPelt+1
+                        boarMeat=boarMeat+1
+                        print("You found 5 gold coins, 1 fur pelt, and some boar meat.")
+                        if die1==1:
+                            ssword+1
+                            print("You also find a short sword")
+                        else:
+                            print("")
+                        print("You now have", coins," coins,")
+                    else:
+                        print("")
                 else:
                     print("")
-        elif scavenge=="B":
-            print("You continue on your hunting after killing the boar")
-        else:
-            print("Dude, you can only use the letters 'A' and 'B' for this one")
+                    print("The boar is covered in it's own blood. It would be foolish to search through it.")
+            elif scavengeBoar=="B":
+                print("You continue on your hunting after killing the boar")
+            else:
+                print("Please answer in only the letters 'A' or 'B'")
+                scavangeBoar==""
     else:
         print("")
     if life==0:
