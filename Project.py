@@ -153,7 +153,7 @@ if start=="y":
             boarAlert=random.randrange(2)+1
             if boarAlert==1:
                 print("The boar notices you and starts charging at you.")
-                boarCharging=input("You have two options to survive: \n A: Run away \n B: Keep chargin and attempt stab the boar \nAnswer: ")
+                boarCharging=input("You have two options to survive: \n A: Run away \n B: Keep charging and attempt stab the boar \nAnswer: ")
                 boarCharging=boarCharging.upper()
                 if boarCharging=="A":
                     evasion=random.randrange(3)+1
@@ -163,7 +163,7 @@ if start=="y":
                     else:
                         print("You are unsecsessful at fleeing from the boar, it impales you as you run away in fear.")
                         life=0
-                else:
+                if boarCharging=="B":
                     daggerHit=random.randrange(2)+1
                     if daggerHit==1:
                         print("\nYou stab the boar in the heart just before it reaches you. It was a close call with death but you killed the boar")
@@ -174,7 +174,7 @@ if start=="y":
                         print("You attempt to stab the boar but don't have the strength. The boar impalles you.")
                         life=0
             else:
-                print("You charge the bow without alerting it. You kill it silently we extreme persission.")
+                print("You charge the bow without alerting it. You kill it silently with extreme persission.")
                 boarDead=True
                 boarKilledByBow=False
                 boarKilledByDagger=True
@@ -236,7 +236,7 @@ if start=="y":
                         else:
                             print("")
                         print("You now have ", arrows," arrows and ", coins," coins.")
-                    elif boarKilledByBow==True:
+                    elif boarKilledByDagger==True:
                         coins=coins+5
                         furPelt=furPelt+1
                         boarMeat=boarMeat+1
@@ -259,6 +259,7 @@ if start=="y":
                 scavangeBoar==""
     else:
         print("")
+
     if life==0:
         if lenName==0:
             print("""
