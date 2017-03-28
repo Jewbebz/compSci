@@ -13,6 +13,13 @@ dagger=0
 furPelt=0
 boarMeat=0
 bow=0
+#
+#
+#
+#
+#
+#
+#
 
 #Mob info
 boarDead=False
