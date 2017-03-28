@@ -1,12 +1,12 @@
-#Standard chances are as follows:
+#-------Standard chances are as follows:-------
     #Evasion Chance is 1/2
     #Bow hit chance is 1/3
     #Dagger hit chance is 1/3
 
-#Imports:
+#-------Imports:-------
 import random
 
-#inventory:
+#-------inventory:-------
 arrows=0
 ssword=0
 coins=10
@@ -15,14 +15,18 @@ furPelt=0
 boarMeat=0
 bow=0
 
-#Mob info:
+#-------Mob info:-------
 boarDead=False
 
-#Character Info:
+#-------Character Info:-------
 name=""
 life=1
-experience=0
-level=1
+#---Leveling Info:---
+rangedWeapons=1
+shortSwordsDaggers=1
+evasionSkill=1
+stealthSkill=1
+totalLevel=(rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill)/4
 
 print ("""\n
 `7MMF'     A     `7MF'     `7MM                                           
@@ -54,10 +58,12 @@ while start=="":
             startWeapon=input("What weapon would you like to start with? \nA: A Bow \nB: A Dagger \nAnswer: ")
             startWeapon=startWeapon.upper()
             if startWeapon=="A":
+                rangedWeapons=rangedWeapons+0.5
                 bow=1
                 arrows=5
                 print("\nYou get a shortbow and 5 arrows to start you journey")
             elif startWeapon=="B":
+                shortSwordDagger=shortSwordDagger+0.5
                 dagger=1
                 print("\nYou get a dagger to start you adventure")
             else:
@@ -91,6 +97,7 @@ while start=="":
                         print("\n")
                         arrowHit=random.randrange(3)+1
                         if arrowHit==1:
+                            rangedWeaopns=rangedWeapons+0.5
                             print("Nice Shot! You shot the boar dead in the head, taking it down before it notices you")
                             boarDead=True
                             boarKilledByBow=True
@@ -112,11 +119,13 @@ while start=="":
                                         life=0
                                     else:
                                         print("You sucsessfuly get to the bushes. Your safe...for now.")
+                                        evasionSkill=evasionSkill+0.5
                                 elif boar2=="B":
                                     if dagger>=1:
                                         daggerHit=random.randrange(3)+1
                                         if daggerHit==1:
                                             print("You succsesfully stab the boar")
+                                            shortSwordDagger=shortSwordDagger+0.5
                                             boarDead=True
                                             boarKilledbyDagger=True
                                             boarKilledbyBow=False
@@ -139,6 +148,7 @@ while start=="":
                                                     life=0
                                                 else:
                                                     print("You sucsessfuly get to the bushes. Your safe...for now.")
+                                                    evasionSkill=evasionSkill+0.5
                                             else:
                                                 print("You can only answer in 'A' or 'B' or 'C'.")
                                                 boar3=""
@@ -148,6 +158,7 @@ while start=="":
                                             arrowHit=random.randrange(3)+1
                                             if arrowHit==1:
                                                 print("You hit the boar taking it down")
+                                                rangedWeapons=rangedWeapons+0.5
                                                 boarDead=True
                                                 boarKilledByBow=True
                                                 boarKilledByDagger=False
@@ -176,9 +187,11 @@ while start=="":
                                 if evasion==1:
                                     if arrows>=2:
                                         print("You sucsessfully get away from the boar but you have lost 2 of your arrows while fleeing")
+                                        evasionSkill=evasionSkill+1
                                         arrows=arrows-2
                                     else:
                                         print("You sucsesfully get away from the boar.")
+                                        evasionSkill=evasionSkill+1
                                 else:
                                     print("You are unsecsessful at fleeing from the boar, it impales you as you run away in fear.")
                                     life=0
@@ -186,6 +199,7 @@ while start=="":
                                 daggerHit=random.randrange(2)+1
                                 if daggerHit==1:
                                     print("\nYou stab the boar in the heart just before it reaches you. It was a close call with death but you killed the boar")
+                                    shortSwordDagger=shortSwordDagger+1
                                     boarDead=True
                                     boarKilledByBow=False
                                     boarKilledByDagger=True
@@ -194,6 +208,8 @@ while start=="":
                                     life=0
                         else:
                             print("You charge the bow without alerting it. You kill it silently with extreme persission.")
+                            stealthSkill=stealthSkill+1
+                            shortSwordDagger=shortSwordDagger+0.5
                             boarDead=True
                             boarKilledByBow=False
                             boarKilledByDagger=True
@@ -206,8 +222,13 @@ while start=="":
                             if boarCharging2=="A":
                                 evasion=random.randrange(2)+1
                                 if evasion==1:
-                                    print("You escape the boar, but while running you lost two of your arrows.")
-                                    arrows=arrows-2
+                                    if arrows>=2:
+                                        print("You escape the boar, but while running you lost two of your arrows.")
+                                        arrows=arrows-2
+                                        evasionSkill=evasionSkill+0.5
+                                    else:
+                                        print("You give the boar the slip.")
+                                        evasionSkill=evasionSkill+0.5
                                 else:
                                     print("As you flee the boar catches up with you and you are impaled.")
                             elif boarCharging2=="B":
@@ -226,6 +247,7 @@ while start=="":
                                     evasion=random.randrange(2)+1
                                     if evasion==1:
                                         print("You get away safely.")
+                                        evasionSkill=evasionSkill+0.5
                                     else:
                                         print("Thoe Boar cathes up to you, impaling you upon a tree.")
                                         life=0
@@ -237,6 +259,7 @@ while start=="":
                 evasion=random.randrange(3)+1
                 if evasion==1:
                     print("You escape the boar to live another day")
+                    evasionSkill=evasionSkill+0.5
                 else:
                     print("The boar catches up with you and impales you on a tree.")
                     life=0
@@ -288,6 +311,30 @@ while start=="":
                     scavangeBoar==""
         else:
             print("")
+        #Optional Stats Check
+        if life==0:
+            statCheck=""
+            while statCheck=="":
+                statCheck=input("would you like to see you stats?(y/n)")
+                statCheck=statCheck.lower()
+                if statCheck=="y":
+                    print("""
+--------------------------Stats--------------------------
+Total Level:""", totalLevel, """
+    Skill Breakdown:
+        Ranged Weapons:""", rangedWeapons, """
+        Short Swords and Daggers:""", shortSwordsDaggers ,"""
+        Stealth:""", stealthSkill ,"""
+        Evasion:""", evasionSkill ,"""
+---------------------------------------------------------
+""")
+                elif statCheck=="n":
+                    print("\nFair enough\n")
+                else:
+                    print("You have two answer with a 'Y' for yes or a 'N' for no.)
+                          statCheck==""
+        else:
+                          print("")
         #Death Messages
         if life==0:
             if lenName==0:
