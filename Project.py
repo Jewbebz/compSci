@@ -26,7 +26,7 @@ rangedWeapons=1
 shortSwordsDaggers=1
 evasionSkill=1
 stealthSkill=1
-totalLevel=(rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill)/4
+totalLevel=rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill
 
 print ("""\n
 `7MMF'     A     `7MF'     `7MM                                           
@@ -312,12 +312,13 @@ while start=="":
         else:
             print("")
         #Optional Stats Check
-        if life==0:
+        if life==1:
             statCheck=""
             while statCheck=="":
-                statCheck=input("would you like to see you stats?(y/n)")
+                statCheck=input("\nwould you like to see you stats?(y/n)")
                 statCheck=statCheck.lower()
                 if statCheck=="y":
+                    totalLevel=rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill
                     print("""
 --------------------------Stats--------------------------
 Total Level:""", totalLevel, """
@@ -331,10 +332,10 @@ Total Level:""", totalLevel, """
                 elif statCheck=="n":
                     print("\nFair enough\n")
                 else:
-                    print("You have two answer with a 'Y' for yes or a 'N' for no.)
-                          statCheck==""
+                    print("You have two answer with a 'Y' for yes or a 'N' for no.")
+                    statCheck==""
         else:
-                          print("")
+            print("")
         #Death Messages
         if life==0:
             if lenName==0:
