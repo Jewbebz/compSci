@@ -22,11 +22,17 @@ boarDead=False
 name=""
 life=1
 #---Leveling Info:---
+level=1
+Experience=0
 rangedWeapons=1
 shortSwordsDaggers=1
 evasionSkill=1
 stealthSkill=1
-totalLevel=rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill
+totalSkillLevel=rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill
+PcurrentHP=50
+PHPcalc=level * 25
+PmaxHP=PHPcalc + 25
+
 
 print ("""\n
 `7MMF'     A     `7MF'     `7MM                                           
@@ -260,6 +266,8 @@ while start=="":
                 if evasion==1:
                     print("You escape the boar to live another day")
                     evasionSkill=evasionSkill+0.5
+                    #boarDone is to move to town
+                    boarDone=1
                 else:
                     print("The boar catches up with you and impales you on a tree.")
                     life=0
@@ -282,6 +290,7 @@ while start=="":
                             furPelt=furPelt+1
                             boarMeat=boarMeat+1
                             print("You recovered your arrow, found 5 gold coins, a fur pelt, and some boar meat.")
+                            boarDone=1
                             if die1==1:
                                 ssword+1
                                 print("You also find a short sword")
@@ -293,6 +302,7 @@ while start=="":
                             furPelt=furPelt+1
                             boarMeat=boarMeat+1
                             print("You found 5 gold coins, 1 fur pelt, and some boar meat.")
+                            boarDone=1
                             if die1==1:
                                 ssword+1
                                 print("You also find a short sword")
@@ -304,38 +314,31 @@ while start=="":
                     else:
                         print("")
                         print("The boar is covered in it's own blood. It would be foolish to search through it.")
+                        boarDone=1
                 elif scavengeBoar=="B":
                     print("You continue on your hunting after killing the boar")
+                    boarDone=1
                 else:
                     print("Please answer in only the letters 'A' or 'B'")
                     scavangeBoar==""
-        else:
-            print("")
-        #Optional Stats Check
-        if life==1:
-            statCheck=""
-            while statCheck=="":
-                statCheck=input("\nwould you like to see you stats?(y/n)")
-                statCheck=statCheck.lower()
-                if statCheck=="y":
-                    totalLevel=rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill
-                    print("""
---------------------------Stats--------------------------
-Total Level:""", totalLevel, """
-    Skill Breakdown:
-        Ranged Weapons:""", rangedWeapons, """
-        Short Swords and Daggers:""", shortSwordsDaggers ,"""
-        Stealth:""", stealthSkill ,"""
-        Evasion:""", evasionSkill ,"""
----------------------------------------------------------
-""")
-                elif statCheck=="n":
-                    print("\nFair enough\n")
-                else:
-                    print("You have two answer with a 'Y' for yes or a 'N' for no.")
-                    statCheck==""
-        else:
-            print("")
+                    #Vale
+        if boarDone==1:
+            print ("After continuing through the forrest for a while, you come across a small town in a clearing. There are a few builings in the center of the town, Including a store, and a few people walking about.")
+        valeCenter=""
+        while valeCenter=="":
+            valeCenter=input ("What is your course of action? \n A: Talk to the people in the town center \n B: Visit the store \n Answer: ")
+            valeCenter=valeCenter.upper()
+            if valeCenter=="A":
+                    print ("The townspeople look at you oddly, not used to visitors to their town. From your conversation, you gather that you are in a town called Vale, and that you have ventured far deeper into the woods than you originally intended. One man, realizing that you are lost, leads you to the store telling you that he thought he saw a map in there a few days ago.")
+                    valeCenter="B"
+            if valeCenter=="B":
+                print ("You enter a well lit a neatly organized building, with shelves of various goods lined on the walls. A rather plump man smiles at you from behind a counter.")
+                valeStore=""
+                while valeStore=="":
+                    valeStore=input ("See anything you want to buy? \n A: Bandage *15HP,5s* \n B: Map *5s* \n C: Nothing \n Answer: ")
+                    valeStore=valeStore.upper()
+         
+       
         #Death Messages
         if life==0:
             if lenName==0:
