@@ -323,7 +323,7 @@ while start=="":
                     scavangeBoar==""
                     #Vale
         if boarDone==1:
-            print ("After continuing through the forrest for a while, you come across a small town in a clearing. There are a few builings in the center of the town, Including a store, and a few people walking about.")
+            print (" \n After continuing through the forrest for a while, you come across a small town in a clearing. There are a few builings in the center of the town, Including a store, and a few people walking about.")
         valeCenter=""
         while valeCenter=="":
             valeCenter=input ("What is your course of action? \n A: Talk to the people in the town center \n B: Visit the store \n Answer: ")
@@ -332,10 +332,10 @@ while start=="":
                     print ("The townspeople look at you oddly, not used to visitors to their town. From your conversation, you gather that you are in a town called Vale, and that you have ventured far deeper into the woods than you originally intended. One man, realizing that you are lost, leads you to the store telling you that he thought he saw a map in there a few days ago.")
                     valeCenter="B"
             if valeCenter=="B":
-                print ("You enter a well lit a neatly organized building, with shelves of various goods lined on the walls. A rather plump man smiles at you from behind a counter.")
+                print (" \n You enter a well lit a neatly organized building, with shelves of various goods lined on the walls. A rather plump man smiles at you from behind a counter.")
                 valeStore=""
                 while valeStore=="":
-                    valeStore=input ("See anything you want to buy? \n A: Bandage *15HP,5s* \n B: Map *5s* \n C: Nothing \n Answer: ")
+                    valeStore=input (" \n See anything you want to buy? \n A: Bandage *15HP,5s* \n B: Map *5s* \n C: Nothing \n Answer: ")
                     valeStore=valeStore.upper()
          
        
