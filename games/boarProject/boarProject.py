@@ -14,6 +14,8 @@ dagger=0
 furPelt=0
 boarMeat=0
 bow=0
+bandage=0
+Map=0
 
 #-------Mob info:-------
 boarDead=False
@@ -337,6 +339,32 @@ while start=="":
                 while valeStore=="":
                     valeStore=input (" \n See anything you want to buy? \n A: Bandage *15HP,5s* \n B: Map *5s* \n C: Nothing \n Answer: ")
                     valeStore=valeStore.upper()
+                    if valeStore=="A"
+                        if coins>=5
+                            if bandage==0
+                                bandage=1
+                                coins=coins-5
+                                print (" \n Thank you for your purchase!")
+                            else
+                                print (" \n We only had one, and you bought it pal.")
+                                valeStore=""
+                        else
+                            print ("You don't have enough money for this.")
+                            valeStore=""
+                    if valeStore=="B"
+                        if coins>=5
+                            if Map==0
+                                Map=1
+                                coins=coins-5
+                                print (" \n Thanks for the purchase!")
+                            else
+                                print (" \n You already have a Map!")
+                        else
+                            print (" \n You don't have enough money for this!")
+                    if valeStore=="C"
+                        valeCenter2=""
+        while valeCenter2==""
+            valeCenter2=input ("You walk back into
          
        
         #Death Messages
