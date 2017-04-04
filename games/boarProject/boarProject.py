@@ -18,6 +18,8 @@ bandage=0
 Map=0
 #-------Random Var Declerations------
 valeCenter2=0
+boarDone=0
+valeCenter=0
 
 #-------Mob info:-------
 boarDead=False
@@ -142,6 +144,7 @@ while start=="":
                                         else:
                                             print("You miss and the boar impales you, killing you. \n")
                                             life=0
+                                            boarDone=0
                                     else:
                                         boar3=""
                                         while boar3=="":
@@ -327,8 +330,9 @@ while start=="":
                     scavangeBoar==""
                     #Vale
         if boarDone==1:
-            print (" \n After continuing through the forrest for a while, you come across a small town in a clearing. There are a few builings in the center of the town, Including a store, and a few people walking about.")
-        valeCenter=""
+            if life==1:
+                print (" \n After continuing through the forrest for a while, you come across a small town in a clearing. There are a few builings in the center of the town, Including a store, and a few people walking about.")
+                valeCenter=""
         while valeCenter=="":
             valeCenter=input ("What is your course of action? \n A: Talk to the people in the town center \n B: Visit the store \n Answer: ")
             valeCenter=valeCenter.upper()
@@ -347,6 +351,7 @@ while start=="":
                                 bandage=1
                                 coins=coins-5
                                 print (" \n Thank you for your purchase!")
+                                valeStore=""
                             else:
                                 print (" \n We only had one, and you bought it pal.")
                                 valeStore=""
@@ -359,18 +364,22 @@ while start=="":
                                 Map=1
                                 coins=coins-5
                                 print (" \n Thanks for the purchase!")
+                                valeStore=""
                             else:
                                 print (" \n You already have a Map!")
+                                valeStore=""
                         else:
                             print (" \n You don't have enough money for this!")
+                            valeStore=""
                     if valeStore=="C":
                         valeCenter2=""
-        while valeCenter2=="":
+#Second time in town after getting a map. This currently doesn't work, and will just print gravestones. We need to figure out what comes after this.
+        
          
        
         #Death Messages
-            if life==0:
-                if lenName==0:
+    if life==0:
+        if lenName==0:
                     print("""
                  ______
            _____/      \\_____
@@ -387,7 +396,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==1:
+        elif lenName==1:
                 print("""
                  ______
            _____/      \\_____
@@ -404,7 +413,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==2:
+        elif lenName==2:
                 print("""
                  ______
            _____/      \\_____
@@ -421,7 +430,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==3:
+        elif lenName==3:
                 print("""
                  ______
            _____/      \\_____
@@ -438,7 +447,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==4:
+        elif lenName==4:
                 print("""
                  ______
            _____/      \\_____
@@ -455,7 +464,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==5:
+        elif lenName==5:
                 print("""
                  ______
            _____/      \\_____
@@ -472,7 +481,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==6:
+        elif lenName==6:
                 print("""
                  ______
            _____/      \\_____
@@ -489,7 +498,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==7:
+        elif lenName==7:
                 print("""
                  ______
            _____/      \\_____
@@ -506,7 +515,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==8:
+        elif lenName==8:
                 print("""
                  ______
            _____/      \\_____
@@ -523,7 +532,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==9:
+        elif lenName==9:
                 print("""
                  ______
            _____/      \\_____
@@ -540,7 +549,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==10:
+        elif lenName==10:
                 print("""
                  ______
            _____/      \\_____
@@ -557,7 +566,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==11:
+        elif lenName==11:
                 print("""
                  ______
            _____/      \\_____
@@ -574,7 +583,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==12:
+        elif lenName==12:
                 print("""
                  ______
            _____/      \\_____
@@ -591,7 +600,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==13:
+        elif lenName==13:
                 print("""
                  ______
            _____/      \\_____
@@ -608,7 +617,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==14:
+        elif lenName==14:
                 print("""
                  ______
            _____/      \\_____
@@ -625,7 +634,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==15:
+        elif lenName==15:
                 print("""
                  ______
            _____/      \\_____
@@ -642,7 +651,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            elif lenName==16:
+        elif lenName==16:
                 print("""
                  ______
            _____/      \\_____
@@ -659,8 +668,8 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
-            else:
-                print("You died")
+        else:
+            print("You died")
     elif start=="n":
         print("\n")
         print("Okay, cya pal")
