@@ -339,31 +339,31 @@ while start=="":
                 while valeStore=="":
                     valeStore=input (" \n See anything you want to buy? \n A: Bandage *15HP,5s* \n B: Map *5s* \n C: Nothing \n Answer: ")
                     valeStore=valeStore.upper()
-                    if valeStore=="A"
-                        if coins>=5
-                            if bandage==0
+                    if valeStore=="A":
+                        if coins>=5:
+                            if bandage==0:
                                 bandage=1
                                 coins=coins-5
                                 print (" \n Thank you for your purchase!")
-                            else
+                            else:
                                 print (" \n We only had one, and you bought it pal.")
                                 valeStore=""
-                        else
+                        else:
                             print ("You don't have enough money for this.")
                             valeStore=""
-                    if valeStore=="B"
-                        if coins>=5
-                            if Map==0
+                    if valeStore=="B":
+                        if coins>=5:
+                            if Map==0:
                                 Map=1
                                 coins=coins-5
                                 print (" \n Thanks for the purchase!")
-                            else
+                            else:
                                 print (" \n You already have a Map!")
-                        else
+                        else:
                             print (" \n You don't have enough money for this!")
-                    if valeStore=="C"
+                    if valeStore=="C":
                         valeCenter2=""
-        while valeCenter2==""
+        while valeCenter2=="":
             valeCenter2=input ("You walk back into
          
        
