@@ -16,6 +16,8 @@ boarMeat=0
 bow=0
 bandage=0
 Map=0
+#-------Random Var Declerations------
+valeCenter2=0
 
 #-------Mob info:-------
 boarDead=False
@@ -364,13 +366,12 @@ while start=="":
                     if valeStore=="C":
                         valeCenter2=""
         while valeCenter2=="":
-            valeCenter2=input ("You walk back into
          
        
         #Death Messages
-        if life==0:
-            if lenName==0:
-                print("""
+            if life==0:
+                if lenName==0:
+                    print("""
                  ______
            _____/      \\_____
           |  _     ___   _   ||
