@@ -374,7 +374,14 @@ while start=="":
                     if valeStore=="C":
                         valeCenter2=""
 #Second time in town after getting a map. This currently doesn't work, and will just print gravestones. We need to figure out what comes after this.
-        
+        while valeCenter2=="":
+            print (" \n You've arrived back in the center of the town. The few people who were milling about earlier seem to have left, leaving the town center earily quiet.")
+            if map==1:
+                valeCenter2=input (" \n With your map you see that the path leading out of the north side of the village leads to a much larger city, called Orion. Do you: \n A: Take the path and head towards Orion. \n B: Go back to the store. \n Answer ")
+                valeCenter2=valeCenter2.upper()
+                
+                        
+                    
          
        
         #Death Messages
