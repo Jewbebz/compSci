@@ -2,10 +2,9 @@
     #Evasion Chance is 1/2
     #Bow hit chance is 1/3
     #Dagger hit chance is 1/3
-
 #-------Imports:-------
 import random
-
+import time
 #-------inventory:-------
 arrows=0
 ssword=0
@@ -29,6 +28,8 @@ boarDead=False
 #-------Character Info:-------
 name=""
 life=1
+inventory = {"Rawhide Armor": "Rough form of protection, stitched together.","Quiver": "Old quiver your father used, family seal in front.", "Leather Satchel": "Old raggedy sack that you carry the little you have in."}
+
 #---Leveling Info:---
 level=1
 Experience=0
@@ -53,7 +54,74 @@ print ("""\n
                                                                           """)
 start=""
 while start=="":
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
+    time.sleep(0.1)
+    print("\n")
     start=input("Start? y/n: ")
+    print("")
     start=start.lower()
     if start=="y":
         #Name Section
@@ -72,17 +140,33 @@ while start=="":
             startWeapon=input("What weapon would you like to start with? \nA: A Bow \nB: A Dagger \nAnswer: ")
             startWeapon=startWeapon.upper()
             if startWeapon=="A":
+                item=("Bow")
+                definition=("A nice piece of ashe wood, fashioned into a pretty decent bow")
+                inventory[item]=definition
+                item=("Broad Arrows")
+                definition=("Broad tipped arrows, used for hunting or unarmored assailents, you have arrows left") 
+                inventory[item]=definition
                 rangedWeapons=rangedWeapons+0.5
                 bow=1
                 arrows=5
+                time.sleep(1)
                 print("\nYou get a shortbow and 5 arrows to start you journey")
+                print("\n\n")
+                print("Current Inventory is: ")
+                time.sleep(1)
+                print("\n\n")
             elif startWeapon=="B":
-                shortSwordDagger=shortSwordDagger+0.5
+                shortSwordsDaggers=shortSwordsDaggers+0.5
                 dagger=1
+                time.sleep(1)
                 print("\nYou get a dagger to start you adventure")
             else:
                 print("You can only enter 'A' or 'B'.\n")
                 startWeapon=""
+                time.sleep(1)
+        for key, value in sorted(inventory.items()):
+            print (key," = ", value)
+        time.sleep(3)
         print("""\nYou continue your long trek in the woods, so far you haven't been too successful while hunting, but you see a wild board ahead.\nAs it approachs you, you have a few options.
 
               _,-"'''"-..__
@@ -107,9 +191,11 @@ while start=="":
                 if bow==1:
                     if arrows>=1:
                         arrows=arrows-1
+                        time.sleep(1)
                         print("You take aim and fire")
                         print("\n")
                         arrowHit=random.randrange(3)+1
+                        time.sleep(1)
                         if arrowHit==1:
                             rangedWeaopns=rangedWeapons+0.5
                             print("Nice Shot! You shot the boar dead in the head, taking it down before it notices you")
@@ -121,18 +207,21 @@ while start=="":
                             print("\n")
                             boar2=""
                             while boar2=="":
+                                time.sleep(1)
                                 boar2=input("As it charges, you have limited options, they are: \n A: Get to cover \n B: Wield dagger in defence \n C: Fire again \n Answer: ")
                                 print("\n")
                                 boar2=boar2.upper()
                                 if boar2=="A":
+                                    time.sleep(1)
                                     print ("You run for cover")
                                     print("\n")                    
                                     evasion=random.randrange(2)+1
                                     if evasion==1:
+                                        time.sleep(1)
                                         print("You trip and fall, the boar charges straight through you, impailing you")
                                         life=0
                                     else:
-                                        print("You sucsessfuly get to the bushes. Your safe...for now.")
+                                        print("You sucsessfuly get to the bushes. You're safe...for now.")
                                         evasionSkill=evasionSkill+0.5
                                 elif boar2=="B":
                                     if dagger>=1:
@@ -150,18 +239,22 @@ while start=="":
                                     else:
                                         boar3=""
                                         while boar3=="":
+                                            time.sleep(1)
                                             boar3=input("You don't have a dagger to charge with, so you can either \n A:  Shoot at the boar with your bow \n B: Run for cover \n Answer: ")
                                             boar3=boar3.upper()
                                             if boar3=="A":
                                                 boar2="C"
                                             elif boar3=="B":
+                                                time.sleep(1)
                                                 print ("You run for cover")
                                                 print("\n")                    
                                                 evasion=random.randrange(2)+1
                                                 if evasion==1:
+                                                    time.sleep(1)
                                                     print("You trip and fall, the boar charges straight through you, impailing you")
                                                     life=0
                                                 else:
+                                                    time.sleep(1)
                                                     print("You sucsessfuly get to the bushes. Your safe...for now.")
                                                     evasionSkill=evasionSkill+0.5
                                             else:
@@ -172,56 +265,68 @@ while start=="":
                                         if arrows>=1:
                                             arrowHit=random.randrange(3)+1
                                             if arrowHit==1:
+                                                time.sleep(1)
                                                 print("You hit the boar taking it down")
                                                 rangedWeapons=rangedWeapons+0.5
                                                 boarDead=True
                                                 boarKilledByBow=True
                                                 boarKilledByDagger=False
                                             else:
+                                                time.sleep(1)
                                                 print("You miss the boar, it charges impaling you")
                                                 life=0
                                         else:
+                                            time.sleep(1)
                                             print("You don't have any arrows. The boar imaples you.")
                                             life=0
                                     else:
                                         boar4=input("")
                                 else:
+                                    time.sleep(1)
                                     print("You can only answer with 'A', 'B', or 'C'.")
             #Draw your Dagger and Charge the Boar
             elif boar=="B":
                 if dagger==1:
                     boarAlert=random.randrange(2)+1
                     if boarAlert==1:
+                        time.sleep(1)
                         print("The boar notices you and starts charging at you.")
                         boarCharging=""
                         while boarCharging=="":
+                            time.sleep(1)
                             boarCharging=input("You have two options to survive: \n A: Run away \n B: Keep charging and attempt stab the boar \nAnswer: ")
                             boarCharging=boarCharging.upper()
                             if boarCharging=="A":
                                 evasion=random.randrange(3)+1
                                 if evasion==1:
                                     if arrows>=2:
+                                        time.sleep(1)
                                         print("You sucsessfully get away from the boar but you have lost 2 of your arrows while fleeing")
                                         evasionSkill=evasionSkill+1
                                         arrows=arrows-2
                                     else:
+                                        time.sleep(1)
                                         print("You sucsesfully get away from the boar.")
                                         evasionSkill=evasionSkill+1
                                 else:
+                                    time.sleep(1)
                                     print("You are unsecsessful at fleeing from the boar, it impales you as you run away in fear.")
                                     life=0
                             if boarCharging=="B":
                                 daggerHit=random.randrange(2)+1
                                 if daggerHit==1:
+                                    time.sleep(1)
                                     print("\nYou stab the boar in the heart just before it reaches you. It was a close call with death but you killed the boar")
                                     shortSwordDagger=shortSwordDagger+1
                                     boarDead=True
                                     boarKilledByBow=False
                                     boarKilledByDagger=True
                                 else:
+                                    time.sleep(1)
                                     print("You attempt to stab the boar but don't have the strength. The boar impalles you.")
                                     life=0
                         else:
+                            time.sleep(1)
                             print("You charge the bow without alerting it. You kill it silently with extreme persission.")
                             stealthSkill=stealthSkill+1
                             shortSwordDagger=shortSwordDagger+0.5
@@ -229,64 +334,78 @@ while start=="":
                             boarKilledByBow=False
                             boarKilledByDagger=True
                     else:
+                        time.sleep(1)
                         print("you don't have a dagger, but you chargin alerts the bear")
                         boarCharging2=""
                         while boarCharging2=="":
+                            time.sleep(1)
                             boarCharging2=input("You can either run or try and shoot it with another arrow. \nA: Flee \nB: Shoot at the boar \nAnswer: ")
                             boarCharging2=boarCharging2.upper()
                             if boarCharging2=="A":
                                 evasion=random.randrange(2)+1
                                 if evasion==1:
                                     if arrows>=2:
+                                        time.sleep(1)
                                         print("You escape the boar, but while running you lost two of your arrows.")
                                         arrows=arrows-2
                                         evasionSkill=evasionSkill+0.5
                                     else:
+                                        time.sleep(1)
                                         print("You give the boar the slip.")
                                         evasionSkill=evasionSkill+0.5
                                 else:
+                                    time.sleep(1)
                                     print("As you flee the boar catches up with you and you are impaled.")
                             elif boarCharging2=="B":
                                 if arrows>=1:
                                     arrowHit=random.randrange(2)+1
                                     if arrowHit==1:
+                                        time.sleep(1)
                                         print("You hit the boar in the head, killing it.")
                                         boadDead=True
                                         boarKilledByBow=True
                                         boarKilledByDagger=False
                                     else:
+                                        time.sleep(1)
                                         print("You miss and the boar reaches you.")
                                         life=0
                                 else:
+                                    time.sleep(1)
                                     print("You don't have any arrows to shoot with and so you are forced to flee.")
                                     evasion=random.randrange(2)+1
                                     if evasion==1:
                                         print("You get away safely.")
                                         evasionSkill=evasionSkill+0.5
                                     else:
+                                        time.sleep(1)
                                         print("Thoe Boar cathes up to you, impaling you upon a tree.")
                                         life=0
                             else:
+                                time.sleep(1)
                                 print("You can only answer with an 'A' or a 'B'.")
                                 boarCharging2==""
             #Run
             elif boar=="C":
                 evasion=random.randrange(3)+1
                 if evasion==1:
+                    time.sleep(1)
                     print("You escape the boar to live another day")
                     evasionSkill=evasionSkill+0.5
                     #boarDone is to move to town
                     boarDone=1
                 else:
+                    time.sleep(1)
                     print("The boar catches up with you and impales you on a tree.")
                     life=0
             else:
+                time.sleep(1)
                 print("You can only answer with a 'A', 'B', or 'C'.")
                 boar=""
         #Looting the Dead Boar
         if boarDead==True:
             scavengeBoar=""
             while scavengeBoar=="":
+                time.sleep(1)
                 scavengeBoar=input("The boar lies dead, what would you like to do? \n A: Scavenge the boar \n B: Leave it and continue \n Answer: ")
                 scavengeBoar=scavengeBoar.upper()
                 if scavengeBoar=="A":
@@ -298,53 +417,68 @@ while start=="":
                             coins=coins+5
                             furPelt=furPelt+1
                             boarMeat=boarMeat+1
+                            time.sleep(1)
                             print("You recovered your arrow, found 5 gold coins, a fur pelt, and some boar meat.")
                             boarDone=1
                             if die1==1:
                                 ssword+1
+                                time.sleep(1)
                                 print("You also find a short sword")
                             else:
+                                time.sleep(1)
                                 print("")
                                 print("You now have ", arrows," arrows and ", coins," coins.")
                         elif boarKilledByDagger==True:
                             coins=coins+5
                             furPelt=furPelt+1
                             boarMeat=boarMeat+1
+                            time.sleep(1)
                             print("You found 5 gold coins, 1 fur pelt, and some boar meat.")
                             boarDone=1
                             if die1==1:
                                 ssword+1
+                                time.sleep(1)
                                 print("You also find a short sword")
                             else:
                                 print("")
+                                time.sleep(1)
+                            time.sleep(1)
                             print("You now have", coins," coins,")
                         else:
                             print("")
                     else:
                         print("")
+                        time.sleep(1)
                         print("The boar is covered in it's own blood. It would be foolish to search through it.")
                         boarDone=1
                 elif scavengeBoar=="B":
+                    time.sleep(1)
                     print("You continue on your hunting after killing the boar")
                     boarDone=1
                 else:
+                    time.sleep(1)
                     print("Please answer in only the letters 'A' or 'B'")
                     scavangeBoar==""
                     #Vale
         if boarDone==1:
             if life==1:
+                time.sleep(1)
                 print (" \n After continuing through the forrest for a while, you come across a small town in a clearing. There are a few builings in the center of the town, Including a store, and a few people walking about.")
                 valeCenter=""
         while valeCenter=="":
+            time.sleep(1)
             valeCenter=input ("What is your course of action? \n A: Talk to the people in the town center \n B: Visit the store \n Answer: ")
             valeCenter=valeCenter.upper()
             if valeCenter=="A":
-                    print ("The townspeople look at you oddly, not used to visitors to their town. From your conversation, you gather that you are in a town called Vale, and that you have ventured far deeper into the woods than you originally intended. One man, realizing that you are lost, leads you to the store telling you that he thought he saw a map in there a few days ago.")
-                    valeCenter="B"
+                time.sleep(1)
+                print ("The townspeople look at you oddly, as they are not used to visitors to their town. From your conversation, you gather that you are in a town called Vale, and that you have ventured far deeper into the woods than you originally intended. One man, realizing that you are lost, leads you to the store telling you that he thought he saw a map in there a few days ago.")
+                valeCenter="B"
             if valeCenter=="B":
+                time.sleep(1)
                 print (" \n You enter a well lit a neatly organized building, with shelves of various goods lined on the walls. A rather plump man smiles at you from behind a counter.")
                 valeStore=""
                 while valeStore=="":
+                    time.sleep(1)
                     valeStore=input (" \n See anything you want to buy? \n A: Bandage *15HP,5s* \n B: Map *5s* \n C: Nothing \n Answer: ")
                     valeStore=valeStore.upper()
                     if valeStore=="A":
@@ -352,12 +486,15 @@ while start=="":
                             if bandage==0:
                                 bandage=1
                                 coins=coins-5
+                                time.sleep(1)
                                 print (" \n Thank you for your purchase!")
                                 valeStore=""
                             else:
+                                time.sleep(1)
                                 print (" \n We only had one, and you bought it pal.")
                                 valeStore=""
                         else:
+                            time.sleep(1)
                             print ("You don't have enough money for this.")
                             valeStore=""
                     if valeStore=="B":
@@ -365,18 +502,22 @@ while start=="":
                             if Map==0:
                                 Map=1
                                 coins=coins-5
+                                time.sleep(1)
                                 print (" \n Thanks for the purchase!")
                                 valeStore=""
                             else:
+                                time.sleep(1)
                                 print (" \n You already have a Map!")
                                 valeStore=""
                         else:
+                            time.sleep(1)
                             print (" \n You don't have enough money for this!")
                             valeStore=""
                     if valeStore=="C":
                         if Map==1:
                             valeCenter2=""
                         else:
+                            time.sleep(1)
                             print ("The shopkeeper looks at you as you leave. He looks conflicted for a moment before asking you to wait. He slowly walks to you. \n 'You look lost pal. Here, on the house.' \n He hands you a map of the surrounding area.")
                             Map=1
                             valeCenter2=""
@@ -394,7 +535,7 @@ while start=="":
         #Death Messages
     if life==0:
         if lenName==0:
-                    print("""
+                print("""
                  ______
            _____/      \\_____
           |  _     ___   _   ||
@@ -410,6 +551,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==1:
                 print("""
                  ______
@@ -427,6 +569,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==2:
                 print("""
                  ______
@@ -444,6 +587,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==3:
                 print("""
                  ______
@@ -461,6 +605,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==4:
                 print("""
                  ______
@@ -478,6 +623,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==5:
                 print("""
                  ______
@@ -495,6 +641,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==6:
                 print("""
                  ______
@@ -512,6 +659,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==7:
                 print("""
                  ______
@@ -529,6 +677,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==8:
                 print("""
                  ______
@@ -546,6 +695,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==9:
                 print("""
                  ______
@@ -563,6 +713,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==10:
                 print("""
                  ______
@@ -580,6 +731,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==11:
                 print("""
                  ______
@@ -597,6 +749,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==12:
                 print("""
                  ______
@@ -614,6 +767,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==13:
                 print("""
                  ______
@@ -631,6 +785,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==14:
                 print("""
                  ______
@@ -648,6 +803,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==15:
                 print("""
                  ______
@@ -665,6 +821,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         elif lenName==16:
                 print("""
                  ______
@@ -682,6 +839,7 @@ while start=="":
   *       | *   **    * **   |**      **
    \))....\\/.,(//,,..,,\||(,,.,\\,.((//
    """)
+                start=""
         else:
             print("You died")
     elif start=="n":
