@@ -9,9 +9,9 @@ import time
 
 #-----Itmes:-----
 items={
-	"Rawhide Armor": "Rough form of protection, stitched together.(+5 protection)",
-	"Leather Satchel": "An old, raggedy sack that carries the few things you have.",
-	"Quiver": "An old quiver you father used, there is a family seal on it's front."
+	"2) Rawhide Armor": "Rough form of protection, stitched together.(+5 protection)",
+	"1) Leather Satchel": "An old, raggedy sack that carries the few things you have.",
+	"3) Quiver": "An old quiver you father used, there is a family seal on it's front."
 }
 
 #-----Random Temporary Variables:-----
