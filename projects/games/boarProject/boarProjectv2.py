@@ -1,7 +1,8 @@
 #boarProject v2.0
-#------Standard Chance is Calculated as Such:-----
-	#(skillName)*(skillLevel)*(totalLevel)
-	#To change the dificulty we just tru to get anything that is greater than that number out of 'x' arbitrary number
+#------Standard Chances:-----
+    #Hit Chance:
+        #(skill level)*(player level)=attackSucsessfulChance
+        #(difficulty level)*(player level)=
 
 #-----Imports:----
 import random
@@ -22,7 +23,11 @@ boar1Dead=False
 #-----Character Info:-----
 name=""
 alive=True
-inventory={""}
+inventory={"Rawhide Armor"
+           "Quiver"
+           "Leather Satchel"
+}
 
-for key, value in sorted(items.items()):
-		print(key," = ", value)
+#-----Leveling Info:-----
+level=1
+totalExperience=0
