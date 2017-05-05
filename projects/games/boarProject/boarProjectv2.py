@@ -31,3 +31,9 @@ inventory={"Rawhide Armor"
 #-----Leveling Info:-----
 level=1
 totalExperience=0
+    #Skill Specific Levels:
+rangedWeapons=1
+shortSwordsDaggers=1
+evasionSkill=1
+Stealthskill=1
+total skill level=(rangedWeapons + shortSwordsDaggers + evasionSkill + stealthSkill)/4

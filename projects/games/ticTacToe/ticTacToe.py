@@ -112,7 +112,7 @@ while True:
                 drawBoard(theBoard)
                 print("Congrats! You won the game!")
                 gameIsPlaying=False
-            else:
+            else: 
                 if isBoardFull(theBoard):
                     drawBoard(theBoard)
                     print("The game is a tie.")
