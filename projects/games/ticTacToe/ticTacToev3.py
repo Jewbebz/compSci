@@ -1,17 +1,16 @@
 import random
 def drawBoard(board):
     print("     |     |     ")
-    print("  "+board[0]+"  |  "+board[1]+"  |  "+board[2]+"  ")
+    print("  "+board[1]+"  |  "+board[2]+"  |  "+board[3]+"  ")
     print("     |     |     ")
     print("-----------------")
     print("     |     |     ")
-    print("  "+board[3]+"  |  "+board[6]+"  |  "+board[5]+"  ")
+    print("  "+board[4]+"  |  "+board[5]+"  |  "+board[6]+"  ")
     print("     |     |     ")
     print("-----------------")
     print("     |     |     ")
-    print("  "+board[6]+"  |  "+board[7]+"  |  "+board[8]+"  ")
+    print("  "+board[7]+"  |  "+board[8]+"  |  "+board[9]+"  ")
     print("     |     |     ")
-
 def playerLetter():
     letter=""
     while not (letter=="X" or letter=="O"):
@@ -22,82 +21,74 @@ def playerLetter():
     else:
         return["O", "X"]
 def whoGoesFirst():
-    firstN=random.randrange(1, 2)+1
-    if firstN ==1:
-        return "computer"
-    else:
+    die = random.randrange(2)+1
+    if die == 1:
         return "player"
-
+    else:
+        return "computer"
 def playAgain():
     keepPlaying = input("Would you like to play again?(y/n)")
     keepPlaying = keepPlaying.lower()
     if keepPlaying == "y":
         print("Cool!")
-        play = "y"
+        return "y"
     elif keepPlaying == "n":
         print("Darn, well thanks for playing.")
-        play = "n"
+        return "n"
     else:
-        print("You can only answer with an 'n' or an 'a'")
-
-def move(board, pLetter, move):
+        print("You can only answer with an 'y' or an 'n'")
+def doMove(board, pLetter, move):
     board[move]=pLetter
-
 def won(board, pLetter):
-    return ((board[1]==letter and board[2]==letter and board[3]==letter) or
-            (board[4]==letter and board[5]==letter and board[6]==letter) or
-            (board[7]==letter and board[8]==letter and board[9]==letter) or
-            (board[1]==letter and board[4]==letter and board[7]==letter) or
-            (board[2]==letter and board[5]==letter and board[8]==letter) or
-            (board[3]==letter and board[6]==letter and board[9]==letter) or
-            (board[1]==letter and board[5]==letter and board[9]==letter) or
-            (board[7]==letter and board[5]==letter and board[3]==letter))
-
+    return ((board[1]==pLetter and board[2]==pLetter and board[3]==pLetter) or
+            (board[4]==pLetter and board[5]==pLetter and board[6]==pLetter) or
+            (board[7]==pLetter and board[8]==pLetter and board[9]==pLetter) or
+            (board[1]==pLetter and board[4]==pLetter and board[7]==pLetter) or
+            (board[2]==pLetter and board[5]==pLetter and board[8]==pLetter) or
+            (board[3]==pLetter and board[6]==pLetter and board[9]==pLetter) or
+            (board[1]==pLetter and board[5]==pLetter and board[9]==pLetter) or
+            (board[7]==pLetter and board[5]==pLetter and board[3]==pLetter))
 def copyBoard(board):
     boardCopy=[]
-    for m in board:
-        boardCopy.append(m)
+    for i in board:
+        boardCopy.append(i)
     return boardCopy
-
 def isSpaceFree(board, move):
     return board[move]==" "
-
 def playerMove(board):
     move=""
     while move not in "1 2 3 4 5 6 7 8 9".split() or not isSpaceFree(board, int(move)):
-        move = input("Which space would you like to place your ", pLetter, " in?(1-9)\n Answer:")
+        print("\nWhich space would you like to place your ", pLetter, " in?(1-9)\nAnswer:")
+        move = input()
     return int(move)
-
 def doRandomMove(board, moveList):
     possibleMoves=[]
     for m in moveList:
-        if isSpaceFree(board, i):
+        if isSpaceFree(board, m):
             possibleMoves.append(m)
     if len(possibleMoves)!=0:
         return random.choice(possibleMoves)
     else:
         return None
-
 def getCMove(board, cLetter):
     for n in range(1, 10):
-        copy = boardCopy(board)
-        if isSpaceFree(copy, m):
-            makeMove(copy, cLetter, m)
+        move = n
+        copy = copyBoard(board)
+        if isSpaceFree(copy, move):
+            doMove(copy, cLetter, move)
             if won(copy, cLetter):
-                return m
+                return move
     for m in range(1, 10):
-        copy = boardCopy(board)
-        if isSpaceFree(copy, m):
-            makeMove(copy, pLetter, m)
+        move = m
+        copy = copyBoard(board)
+        if isSpaceFree(copy, move):
+            doMove(copy, pLetter, move)
             if won(copy, pLetter):
-                return m
-    move = chooseRandomMoveFromList(board, [1, 3, 7, 9])
+                return move
+    move = doRandomMove(board, [1, 3, 5, 7, 9])
     if move != None:
         return move
-    if ifSpaceFree(board, 5):
-        return 5
-    return chooseRandomMoveFromList(board, [2, 4, 6, 8])
-
+    return doRandomMove(board, [2, 4, 6, 8])
 def fullBoard (board):
     for s in range(1, 10):
         if isSpaceFree(board, s):
@@ -112,19 +103,31 @@ print ("""\n
     `MM A'  `MM A' 8M8M8M8M  MM 8M       8M     M8 MM    MM    MM 8M8M8M8M
      :MM;    :MM;  YM.    ,  MM YM.    , YA.   ,A9 MM    MM    MM YM.    ,
       VF      VF    `Mbmmd'.JMML.YMbmd'   `Ybmd9'.JMML  JMML  JMML.`Mbmmd' """)
-
-while True:
+print("\nHere's an example board to give you an idea of how to place your peices.")
+print("     |     |     ")
+print("  1  |  2  |  3  ")
+print("     |     |     ")
+print("-----------------")
+print("     |     |     ")
+print("  4  |  5  |  6  ")
+print("     |     |     ")
+print("-----------------")
+print("     |     |     ")
+print("  7  |  8  |  9  ")
+print("     |     |     ")
+play = True
+while play == True:
     playBoard = [" "] * 10
     pLetter, cLetter = playerLetter()
     turn = whoGoesFirst()
-    print("The ", turn, " will go first.")
+    print("\nThe ", turn, " will go first.")
     gameIsPlaying=True
     while gameIsPlaying == True:
         if turn == "player":
             drawBoard(playBoard)
             move = playerMove(playBoard)
-            makeMove(playBoard, pLetter, move)
-            if isWinner(playBoard, pLetter):
+            doMove(playBoard, pLetter, move)
+            if won(playBoard, pLetter):
                 drawBoard(playBoard)
                 print("Congrats!!!")
                 gameIsPlaying = False
@@ -132,13 +135,14 @@ while True:
                 if fullBoard(playBoard):
                     drawBoard(playBoard)
                     print("The game is a tie.")
+                    gameIsPlaying = False
                     break
                 else:
                     turn = "computer"
-        else:
-            move = getCMove(theBoard, cLetter)
-            move(playBoard, cLetter, move)
-            if won(playBoard, cLetter, move):
+        elif turn == "computer":
+            move = getCMove(playBoard, cLetter)
+            doMove(playBoard, cLetter, move)
+            if won(playBoard, cLetter):
                 drawBoard(playBoard)
                 print("The computer won the game.")
                 gameIsPlaying = False
@@ -146,9 +150,13 @@ while True:
                 if fullBoard(playBoard):
                     drawBoard(playBoard)
                     print("It's a tie!")
+                    gameIsPlaying = False
                     break
                 else:
                     turn = "player"
 
-        if not playAgain():
-            break
+    if playAgain() == "n":
+        play = False
+    else:
+        play = True
+
