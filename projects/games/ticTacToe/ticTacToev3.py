@@ -1,5 +1,6 @@
 import random
 def drawBoard(board):
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     print("     |     |     ")
     print("  "+board[1]+"  |  "+board[2]+"  |  "+board[3]+"  ")
     print("     |     |     ")
@@ -30,7 +31,7 @@ def playAgain():
     keepPlaying = input("Would you like to play again?(y/n)")
     keepPlaying = keepPlaying.lower()
     if keepPlaying == "y":
-        print("Cool!")
+        print("Cool!\n")
         return "y"
     elif keepPlaying == "n":
         print("Darn, well thanks for playing.")
@@ -58,7 +59,7 @@ def isSpaceFree(board, move):
 def playerMove(board):
     move=""
     while move not in "1 2 3 4 5 6 7 8 9".split() or not isSpaceFree(board, int(move)):
-        print("\nWhich space would you like to place your ", pLetter, " in?(1-9)\nAnswer:")
+        print("Which space would you like to place your ", pLetter, " in?(1-9)\nAnswer:")
         move = input()
     return int(move)
 def doRandomMove(board, moveList):
