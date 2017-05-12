@@ -24,7 +24,7 @@ valeStore2=0
 
 #-------Mob info:-------
 boarDead=False
-f
+
 #-------Character Info:-------
 name=""
 life=1
