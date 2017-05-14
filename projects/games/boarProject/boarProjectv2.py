@@ -9,7 +9,7 @@ import random
 import time
 
 #-----Itmes:-----
-Items={
+ItemDescriptions={
 	"2) Rawhide Armor": "Rough form of protection, stitched together.(+5 protection)",
 	"1) Leather Satchel": "An old, raggedy sack that carries the few things you have.",
 	"3) Quiver": "An old quiver you father used, there is a family seal on it's front."
@@ -50,10 +50,8 @@ def choose3_3(in1, in2, in3, out1, out2, out3):
 def choose2_2(in1, in2, out1, out2):
     choice = ""
     while choice == "":
-        print("Your options are: \n1) ", in1, ",\n2) ", in2)
-        print("Which would you like to chose?(1/2)\n      Answer: ")
-        choice = input()
-        choice = int(choice)
+        print("Your options are: \n1) ", in1, "\n2) ", in2)
+        choice = input("Which would you like to chose?(1/2)\n      Answer: ")
         if choice == "1":
             print(out1)
             Consequence1()
@@ -76,9 +74,16 @@ def Consequence3():
 #-----Character Info:-----
 Name=""
 Alive=True
-Inventory={"Rawhide Armor"
-           "Quiver"
-           "Leather Satchel"
+Inventory={
+    "Rawhide Armor"
+    "Quiver"
+    "Leather Satchel"
+}
+Ammo={
+    "Arrows"
+    "Bolts"
+    "Throwing Knives"
+    "Throwing Knives"
 }
 
 #-----Leveling Info:-----
@@ -122,6 +127,10 @@ while GameIsPlaying == True:
             in2 = "Dagger"
             out1 = "You start out your hunting trip with a Bow and 10x arrows. Good luck!"
             out2 = "You start your hunting trip with a dagger to defend yourself with."
+            def Consequence1():
+                dict["Ammo"]["Amount"] = dict["Ammo"]["Amount"] + 10
+                Inventory["Bow"]
+                print("YEET")
             choose2_2(in1, in2, out1, out2)
         time.sleep(3)
         Intro()
