@@ -18,7 +18,7 @@ ItemDescriptions={
 #-----Random Variables and Defs:-----
 def Intro():
     iteration = 0
-    while not iteration >= 35:
+    while not iteration >= 7:
         print("\n")
         time.sleep(0.03)
         iteration = iteration + 1
@@ -27,7 +27,7 @@ def Intro():
 Boar1Dead=False
 
 #-----Mob Interaction System:-----
-def choose3_3(in1, in2, in3, out1, out2, out3):
+def choose3_3(in1, in2, in3):
     choice = ""
     while choice == "":
         print("Your options are: \n1) ", in1, ",\n2) ", in2, ", or \n3) ", in3)
@@ -35,56 +35,40 @@ def choose3_3(in1, in2, in3, out1, out2, out3):
         choice = input()
         choice = int(choice)
         if choice == "1":
-            print(out1)
-            Consequence1()
+            Con1()
         elif choice == "2":
-            print(out2)
-            Consequence2()
+            Con2()
         elif choice == "3":
-            print(out3)
-            Consequence3()
+            Con3()
         else:
             print("Sorry, you can only respond with a '1', '2'. and '3'")
             choice = ""
 
-def choose2_2(in1, in2, out1, out2):
+def choose2_2(in1, in2):
     choice = ""
     while choice == "":
         print("Your options are: \n1) ", in1, "\n2) ", in2)
         choice = input("Which would you like to chose?(1/2)\n      Answer: ")
         if choice == "1":
-            print(out1)
-            Consequence1()
+            Con1()
         elif choice == "2":
-            print(out2)
-            Consequence2()
+            Con2()
         else:
             print("Sorry, you can only respond with a '1' or '2'")
             choice = ""
-
-def Consequence1():
-    print("")
-
-def Consequence2():
-    print("")
-
-def Consequence3():
-    print("")
 
 #-----Character Info:-----
 Name=""
 Alive=True
 Inventory={
-    "Rawhide Armor"
-    "Quiver"
-    "Leather Satchel"
+    "Rawhide Armor":True,
+    "Quiver":True,
+    "Leather Satchel":True
 }
-Ammo={
-    "Arrows"
-    "Bolts"
-    "Throwing Knives"
-    "Throwing Knives"
-}
+
+Ammo = {"Arrows": {"Normal":0, "Fire":0, "Water":0, "Blinking":0},
+        "Throwing Knives": {"Normal":0, "Fire":0, "Water":0, "Blinking":0}
+        }
 
 #-----Leveling Info:-----
 Level=1
@@ -94,7 +78,8 @@ RangedWeapons=1
 ShortSwordsDaggers=1
 EvasionSkill=1
 StealthSkill=1
-TotalSkillLevel=(RangedWeapons + ShortSwordsDaggers + EvasionSkill + StealthSkill)/4
+Scavange=1
+TotalSkillLevel=(Scavange + RangedWeapons + ShortSwordsDaggers + EvasionSkill + StealthSkill)/5
 
 #-----Actual Game:-----
 print ("""\n
@@ -106,6 +91,8 @@ print ("""\n
      :MM;    :MM;  YM.    ,  MM YM.    , YA.   ,A9 MM    MM    MM YM.    ,
       VF      VF    `Mbmmd'.JMML.YMbmd'   `Ybmd9'.JMML  JMML  JMML.`Mbmmd'
                                                                           """)
+time.sleep(1.5)
+Intro()
 GameIsPlaying = True
 while GameIsPlaying == True:
     Play = input("Would you like to play?(y/n)")
@@ -120,23 +107,58 @@ while GameIsPlaying == True:
             else:
                 print("\n")
             LenName = len(Name)
-        StartWeapon = ""
-        while StartWeapon =="":
+        SWeap = False
+        while SWeap == False:
             print("What weapon would you like to start your adventure with?")
             in1 = "Bow"
             in2 = "Dagger"
-            out1 = "You start out your hunting trip with a Bow and 10x arrows. Good luck!"
-            out2 = "You start your hunting trip with a dagger to defend yourself with."
-            def Consequence1():
-                dict["Ammo"]["Amount"] = dict["Ammo"]["Amount"] + 10
-                Inventory["Bow"]
-                print("YEET")
-            choose2_2(in1, in2, out1, out2)
+            def Con1():
+                Ammo["Arrows"]["Normal"] = Ammo["Arrows"]["Normal"]+10
+                Inventory["Bow"] = True
+                SWeap = True
+            def Con2():
+                Inventory["Dagger"] = True
+                SWeap = True
+            choose2_2(in1, in2)
         time.sleep(3)
-        Intro()
         print("You continue your long trek in the woods, so far you haven't been too successful while hunting, but you see a wild board ahead.\nAs it approachs you, you have a few options.")
+        print("As you walk into the edge of a clearing you can see a wild boar grazing on some grass.")
+        print("""
+            _,-"'''"-..__
+         |`,-'_. `  ` ``  `--'"'".
+         ;  ,'  | ``  ` `  ` ```  `.
+       ,-'   ..-' ` ` `` `  `` `  ` |
+     ,'    ^    `  `    `` `  ` `.  ;
+    `}_,-^-   _ .  ` \ `  ` __ `   ;
+       `"---"' `-`. ` \---""`.`.  `;
+                  \\` ;       ; `. `,
+                   ||`;      / / | |
+                  //_;`    ,_;' ,_;" """)
+        print("What would you like to do?")
+        in1 = "Shoot at the boar with a bow"
+        in2 = "Try to stab the boar"
+        in3 = "Attempt to sneak past it and keep hunting"
+        def Con1():
+            if Inventory[Bow] == True:
+                chance = random.randrange(2)+1 +RangedWeapons
+                if chance >= 2:
+                    print("You are able to hit the boar while he is not looking and kill it humanely")
+                    RangedWeapons = RangedWeapons +1
+                    print("+1 Skill to Ranged Weapons\nWould you like to loot the Boar?(y/n)")
+                    Loot = input().Upper()
+                    if Loot == "Y":
+                        print("You loot the boar")
+                        LootChance = random.randrange(10)+1
+                        if LootChance >= 2:
+                            print("You are able to quickly skin the boar and get a good portion of meat from it.")
+                            Inventory[BoarMeat]=True
+        def Con2():
+            print("")
+        def Con3():
+            print("")
+        print("What would you like to do now?")
+                            
     else:
         print("That's too bad :(")
         print("Well have a good day")
         GameIsPlaying = False
-        
